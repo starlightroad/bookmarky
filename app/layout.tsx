@@ -4,7 +4,7 @@ import inter from "@/app/ui/fonts";
 
 export const metadata: Metadata = {
   title: {
-    template: "%s",
+    template: "%s | Bookmarky",
     default: "Bookmarky",
   },
   description:
