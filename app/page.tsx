@@ -1,13 +1,15 @@
 import Link from "next/link";
-import { externalLinks } from "@/app/lib/config";
 import { Button } from "@/app/ui/button";
 import Container from "@/app/ui/container";
 import BookmarkyLogo from "@/app/ui/bookmarky-logo";
 import Footer from "@/app/ui/footer";
-import Features from "@/app/ui/home/features";
+import Features from "@/app/ui/features";
 import { TypographyH1, TypographyP } from "@/app/ui/typography";
+import { fetchExternalLinks } from "@/app/lib/data";
 
-export default async function Home() {
+export default function Home() {
+  const externalLinks = fetchExternalLinks();
+
   return (
     <>
       <header className="h-14 w-full border-b px-5 py-3 sm:flex sm:items-center">
@@ -20,8 +22,8 @@ export default async function Home() {
                 </Link>
               </li>
               <li>
-                <Button variant="secondary" size="sm" asChild>
-                  <Link href="/login">Login</Link>
+                <Button size="sm" asChild>
+                  <Link href="/auth/login">Login</Link>
                 </Button>
               </li>
             </ul>
@@ -43,10 +45,10 @@ export default async function Home() {
           </div>
 
           <div className="flex gap-3">
-            <Button className="" asChild>
-              <Link href="/login">Get Started</Link>
+            <Button size="sm" asChild>
+              <Link href="/auth/login">Get Started</Link>
             </Button>
-            <Button className="" variant="outline" asChild>
+            <Button variant="outline" size="sm" asChild>
               <Link href={externalLinks.repository} target="_blank">
                 View Repo
               </Link>

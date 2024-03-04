@@ -11,11 +11,11 @@ export const metadata: Metadata = {
     "Your bookmarks stored in the cloud for easy access on all of your devices.",
 };
 
-type RootLayoutProps = {
+type RootLayoutProps = Readonly<{
   children: React.ReactNode;
-};
+}>;
 
-export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
+export default async function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
       <body className={`${inter.className} antialiased`}>{children}</body>

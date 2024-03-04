@@ -42,7 +42,7 @@ export default function Features() {
             <li key={feature.id} className="w-full">
               <Card>
                 <CardHeader>
-                  <div className="bg-primary mb-6 flex h-12 w-12 items-center justify-center rounded-md">
+                  <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-md bg-primary">
                     <LinkIcon className="text-primary-foreground" />
                   </div>
                   <CardTitle>{feature.title}</CardTitle>

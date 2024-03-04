@@ -3,9 +3,11 @@ import { Code2, Moon, Sun } from "lucide-react";
 import Container from "@/app/ui/container";
 import { Button } from "@/app/ui/button";
 import { generateYear } from "@/app/lib/utils";
-import { externalLinks } from "@/app/lib/config";
+import { fetchExternalLinks } from "@/app/lib/data";
 
 export default function Footer() {
+  const externalLinks = fetchExternalLinks();
+
   return (
     <footer className="border-t py-3">
       <Container>
