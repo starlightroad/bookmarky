@@ -1,3 +1,4 @@
+import Navbar from "@/app/ui/dashboard/navbar";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -5,5 +6,10 @@ export const metadata: Metadata = {
 };
 
 export default async function Overview() {
-  return <main></main>;
+  return (
+    <>
+      <Navbar />
+      <main></main>
+    </>
+  );
 }
