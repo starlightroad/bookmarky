@@ -1,9 +1,9 @@
-import SignOutButton from "@/app/ui/sign-out-button";
+import type { Metadata } from "next";
 
-export default async function Page() {
-  return (
-    <main>
-      <SignOutButton />
-    </main>
-  );
+export const metadata: Metadata = {
+  title: "Dashboard",
+};
+
+export default async function Overview() {
+  return <main></main>;
 }
