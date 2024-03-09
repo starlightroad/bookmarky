@@ -1,9 +1,12 @@
 import { Menu } from "lucide-react";
-import { Avatar, AvatarFallback } from "@/app/ui/avatar";
 import Search from "@/app/ui/search";
 import NavbarButton from "@/app/ui/dashboard/navbar-button";
+import UserMenu from "@/app/ui/dashboard/user-menu";
+import { auth } from "@/auth";
 
-export default function Navbar() {
+export default async function Navbar() {
+  const session = await auth();
+
   return (
     <header className="flex gap-3 px-5 py-3 lg:px-3">
       <div className="flex h-9 w-full max-w-9 cursor-pointer items-center justify-center rounded-md border border-input md:hidden">
@@ -14,9 +17,7 @@ export default function Navbar() {
           <Search placeholder="Search" />
         </div>
         <NavbarButton />
-        <Avatar className="h-9 w-9">
-          <AvatarFallback className="text-sm">GO</AvatarFallback>
-        </Avatar>
+        <UserMenu user={session?.user} />
       </div>
     </header>
   );
