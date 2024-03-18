@@ -1,24 +1,19 @@
-import { Menu } from "lucide-react";
-import Search from "@/app/ui/search";
-import NavbarButton from "@/app/ui/dashboard/navbar-button";
-import UserMenu from "@/app/ui/dashboard/user-menu";
-import { auth } from "@/auth";
+import { MenuSquare } from "lucide-react";
+import { Button } from "@/app/ui/button";
 
-export default async function Navbar() {
-  const session = await auth();
+type NavbarProps = {
+  title: string;
+};
 
+export default function Navbar({ title }: NavbarProps) {
   return (
-    <header className="flex gap-3 px-5 py-3 lg:px-3">
-      <div className="flex h-9 w-full max-w-9 cursor-pointer items-center justify-center rounded-md border border-input md:hidden">
-        <Menu size={16} />
-      </div>
-      <div className="flex w-full gap-3">
-        <div className="flex grow justify-end">
-          <Search placeholder="Search" />
-        </div>
-        <NavbarButton />
-        <UserMenu user={session?.user} />
-      </div>
+    <header className="flex h-16 items-center gap-3 px-5">
+      <Button className="h-8 w-8 p-0 md:hidden" type="button" variant="ghost">
+        <MenuSquare size={16} />
+      </Button>
+      <h1 className="scroll-m-20 text-xl font-semibold tracking-tight">
+        {title}
+      </h1>
     </header>
   );
 }

@@ -17,8 +17,12 @@ type RootLayoutProps = Readonly<{
 
 export default async function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang="en">
-      <body className={`${inter.className} antialiased`}>{children}</body>
+    <html lang="en" className="fixed h-full w-full overflow-hidden">
+      <body
+        className={`${inter.className} fixed h-full w-full overflow-hidden antialiased`}
+      >
+        {children}
+      </body>
     </html>
   );
 }

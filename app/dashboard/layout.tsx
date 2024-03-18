@@ -7,11 +7,11 @@ type DashboardLayoutProps = {
 
 export default function DashboardLayout({ children }: DashboardLayoutProps) {
   return (
-    <Container>
-      <div className="flex">
-        <Sidebar />
-        <div className="w-full">{children}</div>
+    <div className="flex h-full w-full">
+      <Sidebar />
+      <div className="w-full md:pl-56">
+        <Container>{children}</Container>
       </div>
-    </Container>
+    </div>
   );
 }
