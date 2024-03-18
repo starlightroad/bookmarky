@@ -34,6 +34,15 @@ export const authConfig = {
 
       return false;
     },
+    session({ session, token }) {
+      return {
+        ...session,
+        user: {
+          ...session.user,
+          id: token.sub,
+        },
+      };
+    },
   },
   providers: [],
 } satisfies NextAuthConfig;
