@@ -1,7 +1,7 @@
 "use client";
 
 import { User } from "next-auth";
-import { LogOut } from "lucide-react";
+import { LogOut, Settings } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -27,15 +27,19 @@ export default function UserMenu({ user }: UserMenuProps) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
-        <Avatar className="h-9 w-9">
-          <AvatarFallback className="text-sm uppercase">
+        <Avatar className="h-6 w-6">
+          <AvatarFallback className="bg-lime-300 text-xs uppercase">
             {userDisplayName}
           </AvatarFallback>
         </Avatar>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-56" align="end">
-        <DropdownMenuLabel>{user?.email}</DropdownMenuLabel>
+      <DropdownMenuContent className="w-48" align="start">
+        <DropdownMenuLabel>Menu</DropdownMenuLabel>
         <DropdownMenuSeparator />
+        <DropdownMenuItem>
+          <Settings className="mr-2" size={16} />
+          <span>Settings</span>
+        </DropdownMenuItem>
         <DropdownMenuItem onClick={endUserSession}>
           <LogOut className="mr-2" size={16} />
           <span>Log Out</span>

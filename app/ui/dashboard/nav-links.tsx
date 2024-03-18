@@ -48,15 +48,11 @@ export default function NavLinks() {
           },
         );
 
-        const fontStyle = clsx("text-sm", {
-          "font-semibold": pathname === link.href,
-        });
-
         return (
           <li key={link.id}>
             <Link className={linkStyle} href={link.href}>
-              <LinkIcon size={16} />
-              <p className={fontStyle}>{link.name}</p>
+              <LinkIcon className="text-primary" size={16} />
+              <p className="text-sm font-medium text-primary">{link.name}</p>
             </Link>
           </li>
         );
