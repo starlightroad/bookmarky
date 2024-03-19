@@ -47,6 +47,15 @@ export default async function CategoriesTable({
           })}
         </TableBody>
       </Table>
+
+      {!categories.length && (
+        <div className="flex h-20 items-center justify-center px-4">
+          <p className="text-sm text-primary/80">
+            No results were found for your search&nbsp;
+            <span className="font-medium">{query}</span>.
+          </p>
+        </div>
+      )}
     </div>
   );
 }

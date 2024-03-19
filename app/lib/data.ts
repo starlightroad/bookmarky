@@ -44,7 +44,10 @@ export const fetchFilteredCategories = async (
     const categories = await prisma.category.findMany({
       where: {
         userId,
-        name: query || undefined,
+        name: {
+          contains: query || undefined,
+          mode: "insensitive",
+        },
       },
       skip: offset,
     });
