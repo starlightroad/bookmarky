@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "@/app/ui/globals.css";
 import inter from "@/app/ui/fonts";
+import { Toaster } from "@/app/ui/toaster";
 
 export const metadata: Metadata = {
   title: {
@@ -22,6 +23,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
         className={`${inter.className} fixed h-full w-full overflow-hidden antialiased`}
       >
         {children}
+        <Toaster />
       </body>
     </html>
   );
