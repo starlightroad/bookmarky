@@ -31,7 +31,7 @@ export default function Search({ placeholder }: SearchProps) {
   }
 
   return (
-    <div className="flex h-9 w-full max-w-96 items-center rounded-md">
+    <div className="flex h-9 w-full max-w-80 items-center rounded-md">
       <SearchIcon className="pointer-events-none absolute ml-3" size={16} />
       <input
         className="h-full w-full rounded-md border border-input bg-background py-1 pl-9 pr-3 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
