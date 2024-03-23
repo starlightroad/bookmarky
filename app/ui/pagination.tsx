@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
-import clsx from "clsx";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { generatePagination } from "@/app/lib/utils";
 import { ELLIPSIS } from "@/app/lib/constants";
@@ -38,14 +37,8 @@ export default function Pagination({ totalPages }: PaginationProps) {
         </li>
         {pages.map((page) => {
           if (page === ELLIPSIS) return page;
-
-          const linkStyles = clsx(
-            "flex items-center justify-center rounded-full min-w-8 h-8 text-sm hover:bg-slate-100",
-            {
-              "bg-primary hover:bg-primary/95 text-secondary":
-                page === currentPage,
-            },
-          );
+          const isCurrentPage = page === currentPage;
+          const linkStyles = `flex items-center justify-center rounded-full min-w-8 h-8 text-sm ${isCurrentPage ? "bg-primary text-secondary hover:bg-primary/90" : "hover:bg-slate-100"}`;
 
           return (
             <Link key={page} className={linkStyles} href={createPageURL(page)}>
