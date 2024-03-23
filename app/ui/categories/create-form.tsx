@@ -65,12 +65,12 @@ function SaveButton() {
 
   return (
     <Button
-      className="bg-lime-400 text-primary hover:bg-lime-400/90"
+      className="bg-primary text-secondary"
       type="submit"
       size="sm"
       disabled={status.pending}
     >
-      Create Category
+      Save
     </Button>
   );
 }

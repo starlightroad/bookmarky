@@ -7,7 +7,7 @@ export default async function Create() {
 
   return (
     <>
-      <Navbar title="Create New Category" />
+      <Navbar title="New Category" />
       <main className="px-5">
         <CreateCategoryForm userId={session?.user?.id} />
       </main>
