@@ -1,7 +1,7 @@
 import type { CategoriesTable } from "@/app/lib/types";
 import { auth } from "@/auth";
 import { fetchFilteredCategories } from "@/app/lib/data";
-import { UpdateCategory } from "@/app/ui/categories/buttons";
+import TableMenu from "@/app/ui/dashboard/table-menu";
 import {
   Table,
   TableBody,
@@ -31,26 +31,24 @@ export default async function CategoriesTable({
           </TableRow>
         </TableHeader>
         <TableBody>
-          {new Array(1).fill(null).map(() => {
-            return categories.map(({ id, name }) => {
-              return (
-                <TableRow key={id}>
-                  <TableCell className="px-4 py-2">
-                    <div className="flex items-center justify-between">
-                      {name}
-                      <UpdateCategory id={id} />
-                    </div>
-                  </TableCell>
-                </TableRow>
-              );
-            });
+          {categories.map(({ id, name }) => {
+            return (
+              <TableRow key={id}>
+                <TableCell className="px-4 py-2">
+                  <div className="flex items-center justify-between">
+                    <span>{name}</span>
+                    <TableMenu id={id} />
+                  </div>
+                </TableCell>
+              </TableRow>
+            );
           })}
         </TableBody>
       </Table>
 
       {!categories.length && (
         <div className="flex h-20 items-center justify-center px-4">
-          <p className="text-sm text-primary/80">
+          <p className="text-center text-sm text-slate-600">
             No results were found for your search&nbsp;
             <span className="font-medium">{query}</span>.
           </p>

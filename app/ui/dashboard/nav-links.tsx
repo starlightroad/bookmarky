@@ -10,6 +10,7 @@ type LinkProps = {
   name: string;
   href: string;
   icon: typeof Home;
+  bgColor: string;
 };
 
 const links: LinkProps[] = [
@@ -18,18 +19,21 @@ const links: LinkProps[] = [
     name: "Home",
     href: "/dashboard",
     icon: Home,
+    bgColor: "bg-green-700",
   },
   {
     id: "0aa06a95-9418-4622-a992-3a75d1b6c943",
     name: "Bookmarks",
     href: "/dashboard/bookmarks",
     icon: Bookmark,
+    bgColor: "bg-pink-700",
   },
   {
     id: "25f40db3-c0b2-4fc5-8d93-30763cb94022",
     name: "Categories",
     href: "/dashboard/categories",
     icon: Layers3,
+    bgColor: "bg-violet-700",
   },
 ];
 
@@ -42,17 +46,23 @@ export default function NavLinks() {
         const LinkIcon = link.icon;
 
         const linkStyle = clsx(
-          "flex items-center gap-3 rounded-md px-4 py-2 hover:bg-primary/5",
+          "flex items-center gap-3 rounded-md px-4 py-2 hover:bg-secondary/10",
           {
-            "bg-primary/5": pathname === link.href,
+            "bg-secondary/10": pathname === link.href,
           },
         );
 
         return (
           <li key={link.id}>
             <Link className={linkStyle} href={link.href}>
-              <LinkIcon className="text-primary" size={16} />
-              <p className="text-sm font-medium text-primary">{link.name}</p>
+              <div
+                className={`flex h-5 w-5 items-center justify-center rounded-full ${link.bgColor}`}
+              >
+                <LinkIcon className="text-secondary" size={12} />
+              </div>
+              <p className="text-sm font-medium text-secondary/80">
+                {link.name}
+              </p>
             </Link>
           </li>
         );
