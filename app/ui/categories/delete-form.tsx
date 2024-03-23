@@ -1,7 +1,11 @@
+"use client";
+
 import { useFormState, useFormStatus } from "react-dom";
+import { useEffect } from "react";
+import { Trash2 } from "lucide-react";
 import { deleteCategory } from "@/app/lib/actions";
 import { Button } from "@/app/ui/button";
-import { Trash2 } from "lucide-react";
+import { useToast } from "@/app/ui/use-toast";
 
 type DeleteCategoryFormProps = {
   id: string;
@@ -11,6 +15,16 @@ export default function DeleteCategoryForm({ id }: DeleteCategoryFormProps) {
   const intitialState: { message?: string } = {};
   const deleteCategoryWithId = deleteCategory.bind(null, id);
   const [form, dispatch] = useFormState(deleteCategoryWithId, intitialState);
+  const { toast } = useToast();
+
+  useEffect(() => {
+    if (form?.message) {
+      toast({
+        variant: "destructive",
+        description: form.message,
+      });
+    }
+  }, [form.message, toast]);
 
   return (
     <form className="w-full" action={dispatch}>
