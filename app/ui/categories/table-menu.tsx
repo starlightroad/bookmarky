@@ -1,7 +1,8 @@
 "use client";
 
 import { MoreHorizontal } from "lucide-react";
-import { DeleteCategory, UpdateCategory } from "@/app/ui/categories/buttons";
+import { UpdateCategory } from "@/app/ui/categories/buttons";
+import DeleteCategoryForm from "@/app/ui/categories/delete-form";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -22,7 +23,7 @@ export default function TableMenu({ id }: { id: string }) {
           <UpdateCategory id={id} />
         </DropdownMenuItem>
         <DropdownMenuItem className="p-0">
-          <DeleteCategory id={id} />
+          <DeleteCategoryForm id={id} />
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

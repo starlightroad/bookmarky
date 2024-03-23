@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Edit, Plus, Trash2 } from "lucide-react";
+import { Edit, Plus } from "lucide-react";
 import { Button } from "@/app/ui/button";
 
 export function AddCategory() {
@@ -19,25 +19,11 @@ export function UpdateCategory({ id }: { id: string }) {
 
   return (
     <Link
-      className="flex w-full items-center gap-2 rounded-md py-1.5 pl-3 pr-2 text-slate-600 transition-colors hover:bg-blue-600 hover:text-secondary"
+      className="flex w-full cursor-default items-center gap-2 rounded-md py-1.5 pl-3 pr-2 text-slate-600 transition-colors hover:bg-blue-600 hover:text-secondary"
       href={link}
     >
       <Edit size={16} />
       <span className="font-medium">Update</span>
     </Link>
-  );
-}
-
-export function DeleteCategory({ id }: { id: string }) {
-  const deleteItem = async () => {};
-
-  return (
-    <Button
-      className="h-auto w-full justify-start gap-2 bg-inherit p-0 py-1.5 pl-3 pr-2 text-slate-600 hover:text-secondary"
-      onClick={deleteItem}
-    >
-      <Trash2 size={16} />
-      <span>Delete</span>
-    </Button>
   );
 }

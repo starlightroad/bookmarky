@@ -166,3 +166,20 @@ export const updateCategory = async (
   revalidatePath("/dashboard/categories");
   redirect("/dashboard/categories");
 };
+
+export const deleteCategory = async (id: string) => {
+  try {
+    await prisma?.category.delete({
+      where: {
+        id,
+      },
+    });
+  } catch (error) {
+    return {
+      message: "Database Error: Failed to Delete Category.",
+    };
+  }
+
+  revalidatePath("/dashboard/categories");
+  redirect("/dashboard/categories");
+};
