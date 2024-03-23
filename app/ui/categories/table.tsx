@@ -1,7 +1,7 @@
 import type { CategoriesTable } from "@/app/lib/types";
 import { auth } from "@/auth";
 import { fetchFilteredCategories } from "@/app/lib/data";
-import TableMenu from "@/app/ui/dashboard/table-menu";
+import TableMenu from "@/app/ui/categories/table-menu";
 import {
   Table,
   TableBody,
