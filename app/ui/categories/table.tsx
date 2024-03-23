@@ -10,6 +10,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/app/ui/table";
+import { formatDate } from "@/app/lib/utils";
 
 export default async function CategoriesTable({
   query,
@@ -27,16 +28,20 @@ export default async function CategoriesTable({
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead className="h-10 w-full">Name</TableHead>
+            <TableHead className="w-full_ h-10">Name</TableHead>
+            <TableHead className="w-full_ h-10">Updated</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
-          {categories.map(({ id, name }) => {
+          {categories.map(({ id, name, updatedAt }) => {
             return (
               <TableRow key={id}>
                 <TableCell className="px-4 py-2">
+                  <span>{name}</span>
+                </TableCell>
+                <TableCell className="px-4 py-2">
                   <div className="flex items-center justify-between">
-                    <span>{name}</span>
+                    <span>{formatDate(updatedAt.toString())}</span>
                     <TableMenu id={id} />
                   </div>
                 </TableCell>
