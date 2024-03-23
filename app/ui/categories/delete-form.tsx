@@ -24,7 +24,7 @@ export default function DeleteCategoryForm({ id }: DeleteCategoryFormProps) {
         description: form.message,
       });
     }
-  }, [form.message, toast]);
+  }, [form?.message, toast]);
 
   return (
     <form className="w-full" action={dispatch}>
