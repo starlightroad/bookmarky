@@ -5,7 +5,7 @@ import { useFormState, useFormStatus } from "react-dom";
 import { AtSign } from "lucide-react";
 import { Button } from "@/app/ui/button";
 import { Input } from "@/app/ui/input";
-import { authenticate } from "@/app/lib/actions";
+import { authenticate } from "@/app/lib/actions/auth";
 import { TypographyMuted } from "@/app/ui/typography";
 
 export default function LoginForm() {

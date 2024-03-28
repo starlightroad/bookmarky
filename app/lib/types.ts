@@ -1,23 +1,26 @@
-export type CategoriesProps = {
+export type SearchParamsProp = {
   searchParams?: {
     query?: string;
     page?: string;
   };
 };
 
-export type CategoriesTable = {
+export type TableProps = {
   query: string;
   currentPage: number;
 };
 
-export type FormState = {
+export type FormState<Errors = {}> = {
   message?: string | null;
-  errors?: {};
+  errors?: Errors;
 };
 
-export type CategoryForm = {
-  message?: string | null;
-  errors?: {
-    name?: string[];
-  };
-};
+export type BookmarkState = FormState<{
+  title?: string[];
+  location?: string[];
+  categoryId?: string[];
+}>;
+
+export type CategoryState = FormState<{
+  name?: string[];
+}>;

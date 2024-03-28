@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import { auth } from "@/auth";
-import type { CategoriesProps } from "@/app/lib/types";
+import type { SearchParamsProp } from "@/app/lib/types";
 import { AddCategory } from "@/app/ui/categories/buttons";
 import Search from "@/app/ui/search";
-import CategoriesTable from "@/app/ui/categories/table";
 import Navbar from "@/app/ui/dashboard/navbar";
+import CategoriesTable from "@/app/ui/categories/table";
 import Pagination from "@/app/ui/pagination";
 import { fetchCategoriesPages } from "@/app/lib/data";
 
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   title: "Categories",
 };
 
-export default async function Categories({ searchParams }: CategoriesProps) {
+export default async function Categories({ searchParams }: SearchParamsProp) {
   const session = await auth();
   const query = searchParams?.query || "";
   const currentPage = Number(searchParams?.page) || 1;

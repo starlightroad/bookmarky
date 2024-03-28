@@ -4,9 +4,9 @@ import Link from "next/link";
 import { useFormState, useFormStatus } from "react-dom";
 import { CaseSensitive } from "lucide-react";
 import type { Category } from "@prisma/client";
-import type { CategoryForm } from "@/app/lib/types";
+import type { CategoryState } from "@/app/lib/types";
 import { Button } from "@/app/ui/button";
-import { updateCategory } from "@/app/lib/actions";
+import { updateCategory } from "@/app/lib/actions/categories";
 import { Input } from "@/app/ui/input";
 
 type EditCategoryFormProps = {
@@ -14,7 +14,7 @@ type EditCategoryFormProps = {
 };
 
 export default function EditCategoryForm({ category }: EditCategoryFormProps) {
-  const initialState: CategoryForm = {};
+  const initialState: CategoryState = {};
   const updateCategoryWithId = updateCategory.bind(null, category?.id);
   const [form, dispatch] = useFormState(updateCategoryWithId, initialState);
 

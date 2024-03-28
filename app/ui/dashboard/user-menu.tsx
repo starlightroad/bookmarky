@@ -10,7 +10,7 @@ import {
   DropdownMenuTrigger,
 } from "@/app/ui/dropdown-menu";
 import { Avatar, AvatarFallback } from "@/app/ui/avatar";
-import { signOutUser } from "@/app/lib/actions";
+import { signOutUser } from "@/app/lib/actions/auth";
 
 type UserMenuProps = {
   user?: User;

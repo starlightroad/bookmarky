@@ -3,18 +3,14 @@
 import { useFormState, useFormStatus } from "react-dom";
 import { useEffect } from "react";
 import { Trash2 } from "lucide-react";
-import { deleteCategory } from "@/app/lib/actions/categories";
+import { deleteBookmark } from "@/app/lib/actions/bookmarks";
 import { Button } from "@/app/ui/button";
 import { useToast } from "@/app/ui/use-toast";
 
-type DeleteCategoryFormProps = {
-  id: string;
-};
-
-export default function DeleteCategoryForm({ id }: DeleteCategoryFormProps) {
+export default function DeleteBookmarkForm({ id }: { id: string }) {
   const intitialState: { message?: string } = {};
-  const deleteCategoryWithId = deleteCategory.bind(null, id);
-  const [form, dispatch] = useFormState(deleteCategoryWithId, intitialState);
+  const deleteBookmarkWithId = deleteBookmark.bind(null, id);
+  const [form, dispatch] = useFormState(deleteBookmarkWithId, intitialState);
   const { toast } = useToast();
 
   useEffect(() => {

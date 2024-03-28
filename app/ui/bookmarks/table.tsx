@@ -1,4 +1,8 @@
 import { auth } from "@/auth";
+import type { TableProps } from "@/app/lib/types";
+import { formatDate } from "@/app/lib/utils";
+import { fetchFilteredBookmarks } from "@/app/lib/data";
+import TableMenu from "@/app/ui/bookmarks/table-menu";
 import {
   Table,
   TableBody,
@@ -7,22 +11,14 @@ import {
   TableHeader,
   TableRow,
 } from "@/app/ui/table";
-import { bookmarks } from "@/app/lib/placeholder-data";
-import { formatDate } from "@/app/lib/utils";
-
-type TableProps = {
-  query: string;
-  currentPage: number;
-};
 
 export default async function BookmarksTable({
   query,
   currentPage,
 }: TableProps) {
   const session = await auth();
-  const filteredBookmarks = bookmarks.filter((b) =>
-    b.title.toLowerCase().includes(query.trim().toLowerCase()),
-  );
+  const userId = String(session?.user?.id);
+  const bookmarks = await fetchFilteredBookmarks(userId, query, currentPage);
 
   return (
     <div className="overflow-hidden rounded-lg border">
@@ -36,32 +32,31 @@ export default async function BookmarksTable({
           </TableRow>
         </TableHeader>
         <TableBody>
-          {filteredBookmarks.map(
-            ({ id, title, category_id, href, updated_at }) => {
-              return (
-                <TableRow key={id}>
-                  <TableCell className="px-4 py-2">
-                    <span>{title}</span>
-                  </TableCell>
-                  <TableCell className="px-4 py-2">
-                    <span>{category_id}</span>
-                  </TableCell>
-                  <TableCell className="px-4 py-2">
-                    <span>{href}</span>
-                  </TableCell>
-                  <TableCell className="px-4 py-2">
-                    <div className="flex items-center justify-between">
-                      <span>{formatDate(updated_at)}</span>
-                    </div>
-                  </TableCell>
-                </TableRow>
-              );
-            },
-          )}
+          {bookmarks.map(({ id, title, href, updatedAt, category }) => {
+            return (
+              <TableRow key={id}>
+                <TableCell className="px-4 py-2">
+                  <span>{title}</span>
+                </TableCell>
+                <TableCell className="px-4 py-2">
+                  <span>{category?.name}</span>
+                </TableCell>
+                <TableCell className="px-4 py-2">
+                  <span>{href}</span>
+                </TableCell>
+                <TableCell className="px-4 py-2">
+                  <div className="flex items-center justify-between">
+                    <span>{formatDate(updatedAt.toString())}</span>
+                    <TableMenu id={id} />
+                  </div>
+                </TableCell>
+              </TableRow>
+            );
+          })}
         </TableBody>
       </Table>
 
-      {!filteredBookmarks.length && (
+      {!bookmarks.length && (
         <div className="flex h-20 items-center justify-center px-4">
           <p className="text-center text-sm text-slate-600">
             No results were found for your search&nbsp;

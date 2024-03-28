@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import { auth } from "@/auth";
-import Search from "@/app/ui/search";
+import type { SearchParamsProp } from "@/app/lib/types";
 import { AddBookmark } from "@/app/ui/bookmarks/buttons";
+import Search from "@/app/ui/search";
 import Navbar from "@/app/ui/dashboard/navbar";
 import BookmarksTable from "@/app/ui/bookmarks/table";
 import Pagination from "@/app/ui/pagination";
@@ -12,14 +13,7 @@ export const metadata: Metadata = {
   title: "Bookmarks",
 };
 
-type BookmarksProps = {
-  searchParams?: {
-    query?: string;
-    page?: string;
-  };
-};
-
-export default async function Bookmarks({ searchParams }: BookmarksProps) {
+export default async function Bookmarks({ searchParams }: SearchParamsProp) {
   const session = await auth();
   const query = searchParams?.query || "";
   const currentPage = Number(searchParams?.query) || 1;

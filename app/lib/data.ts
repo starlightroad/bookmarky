@@ -33,6 +33,20 @@ export const fetchExternalLinks = () => {
   return externalLinks;
 };
 
+export const fetchCategories = async (userId: string) => {
+  try {
+    const categories = await prisma.category.findMany({
+      where: {
+        userId,
+      },
+    });
+    return categories;
+  } catch (error) {
+    console.error("Database Error:", error);
+    throw new Error("Failed to fetch all categories.");
+  }
+};
+
 export const fetchFilteredCategories = async (
   userId: string,
   query: string,
@@ -93,5 +107,73 @@ export const fetchCategoriesPages = async (
   } catch (error) {
     console.error("Database Error:", error);
     throw new Error("Failed to fetch total number of categories.");
+  }
+};
+
+export const fetchFilteredBookmarks = async (
+  userId: string,
+  query: string,
+  currentPage: number,
+) => {
+  const skip = (currentPage - 1) * ITEMS_PER_PAGE;
+  const take = currentPage * ITEMS_PER_PAGE;
+
+  try {
+    const bookmarks = await prisma.bookmark.findMany({
+      where: {
+        userId,
+        title: {
+          contains: query || undefined,
+          mode: "insensitive",
+        },
+      },
+      include: {
+        category: {
+          select: { name: true },
+        },
+      },
+      skip,
+      take,
+    });
+    return bookmarks;
+  } catch (error) {
+    console.error("Database Error:", error);
+    throw new Error("Failed to fetch all bookmarks.");
+  }
+};
+
+export const fetchBookmarkById = async (id: string) => {
+  try {
+    const bookmark = await prisma.bookmark.findUnique({
+      where: {
+        id,
+      },
+    });
+    return bookmark;
+  } catch (error) {
+    console.error("Database Error:", error);
+    throw new Error("Failed to fetch bookmark.");
+  }
+};
+
+export const fetchBookmarksPages = async (
+  userId: string | undefined,
+  query: string,
+) => {
+  try {
+    const count = await prisma.bookmark.count({
+      where: {
+        userId,
+        title: {
+          contains: query || undefined,
+          mode: "insensitive",
+        },
+      },
+    });
+    const totalPages = Math.ceil(count / ITEMS_PER_PAGE);
+    return totalPages;
+  } catch (error) {
+    console.error("Database Error:", error);
+    throw new Error("Failed to fetch total number of bookmarks.");
   }
 };

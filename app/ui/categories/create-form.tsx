@@ -3,9 +3,9 @@
 import Link from "next/link";
 import { useFormState, useFormStatus } from "react-dom";
 import { CaseSensitive } from "lucide-react";
-import type { CategoryForm } from "@/app/lib/types";
+import type { CategoryState } from "@/app/lib/types";
 import { Button } from "@/app/ui/button";
-import { createCategory } from "@/app/lib/actions";
+import { createCategory } from "@/app/lib/actions/categories";
 import { Input } from "@/app/ui/input";
 
 type CreateCategoryFormProps = {
@@ -15,7 +15,7 @@ type CreateCategoryFormProps = {
 export default function CreateCategoryForm({
   userId,
 }: CreateCategoryFormProps) {
-  const initialState: CategoryForm = {};
+  const initialState: CategoryState = {};
   const createCategoryWithUserId = createCategory.bind(null, userId);
   const [form, dispatch] = useFormState(createCategoryWithUserId, initialState);
 

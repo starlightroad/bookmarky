@@ -1,7 +1,8 @@
-import type { CategoriesTable } from "@/app/lib/types";
+import type { TableProps } from "@/app/lib/types";
 import { auth } from "@/auth";
 import { fetchFilteredCategories } from "@/app/lib/data";
 import TableMenu from "@/app/ui/categories/table-menu";
+import { formatDate } from "@/app/lib/utils";
 import {
   Table,
   TableBody,
@@ -10,18 +11,14 @@ import {
   TableHeader,
   TableRow,
 } from "@/app/ui/table";
-import { formatDate } from "@/app/lib/utils";
 
 export default async function CategoriesTable({
   query,
   currentPage,
-}: CategoriesTable) {
+}: TableProps) {
   const session = await auth();
-  const categories = await fetchFilteredCategories(
-    String(session?.user?.id),
-    query,
-    currentPage,
-  );
+  const userId = String(session?.user?.id);
+  const categories = await fetchFilteredCategories(userId, query, currentPage);
 
   return (
     <div className="overflow-hidden rounded-lg border">
