@@ -38,16 +38,17 @@ export default function Features() {
       <ul className="flex flex-col gap-5 px-5 sm:flex-row">
         {featuresContent.map((feature) => {
           const LinkIcon = feature.icon;
+
           return (
             <li key={feature.id} className="w-full">
               <Card>
-                <CardHeader>
-                  <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-md bg-primary">
-                    <LinkIcon className="text-primary-foreground" />
+                <CardHeader className="p-5">
+                  <div className="mb-5 flex h-8 w-8 items-center justify-center rounded-full bg-primary">
+                    <LinkIcon className="text-primary-foreground" size={16} />
                   </div>
-                  <CardTitle>{feature.title}</CardTitle>
+                  <CardTitle className="text-lg">{feature.title}</CardTitle>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="px-5 pb-5">
                   <p>{feature.description}</p>
                 </CardContent>
               </Card>
