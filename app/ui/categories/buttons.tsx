@@ -23,7 +23,7 @@ export function UpdateCategory({ id }: { id: string }) {
       href={link}
     >
       <Edit size={16} />
-      <span className="font-medium">Update</span>
+      <span className="font-medium">Edit</span>
     </Link>
   );
 }

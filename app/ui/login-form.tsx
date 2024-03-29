@@ -14,7 +14,7 @@ export default function LoginForm() {
   if (form?.email) {
     return (
       <div className="flex flex-col">
-        <header className="mb-3 flex flex-col gap-2 text-center">
+        <header className="mb-6 flex flex-col gap-2 text-center">
           <h1 className="text-2xl font-semibold tracking-tight">
             Check your email
           </h1>
@@ -22,7 +22,7 @@ export default function LoginForm() {
             A verification link was sent to <strong>{form?.email}</strong>
           </TypographyMuted>
         </header>
-        <Button variant="link" asChild>
+        <Button asChild>
           <Link href="/">Go to home</Link>
         </Button>
       </div>
@@ -48,7 +48,7 @@ export default function LoginForm() {
               id="email"
               type="text"
               name="email"
-              placeholder="name@vercel.com"
+              placeholder="name@domain.com"
               autoComplete="off"
             />
             <AtSign className="pointer-events-none absolute left-3 top-1/2 h-[14px] w-[14px] -translate-y-1/2 text-muted-foreground peer-focus:text-gray-900" />
