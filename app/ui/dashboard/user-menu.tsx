@@ -35,9 +35,6 @@ export default function UserMenu({ user }: UserMenuProps) {
       <DropdownMenuContent className="w-48" align="start">
         <DropdownMenuLabel>Menu</DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>
-          <span className="font-medium">Change Email</span>
-        </DropdownMenuItem>
         <DropdownMenuItem onClick={endUserSession}>
           <span className="font-medium">Log Out</span>
         </DropdownMenuItem>
