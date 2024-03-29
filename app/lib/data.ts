@@ -177,3 +177,67 @@ export const fetchBookmarksPages = async (
     throw new Error("Failed to fetch total number of bookmarks.");
   }
 };
+
+export const fetchCardData = async () => {
+  try {
+    const bookmarkCount = await prisma.bookmark.count();
+    const categoryCount = await prisma.category.count();
+    const data = await Promise.all([bookmarkCount, categoryCount]);
+
+    return {
+      numberOfBookmarks: data[0],
+      numberOfCategories: data[1],
+    };
+  } catch (error) {
+    console.error("Database Error:", error);
+    throw new Error("Failed to fetch card data.");
+  }
+};
+
+export const fetchLatestBookmarks = async () => {
+  try {
+    const latestBookmarks = await prisma.bookmark.findMany({
+      orderBy: {
+        createdAt: "desc",
+      },
+      include: {
+        category: {
+          select: {
+            name: true,
+          },
+        },
+      },
+      take: 5,
+    });
+
+    return latestBookmarks.map(({ id, title, category, createdAt }) => ({
+      id,
+      title,
+      category,
+      createdAt,
+    }));
+  } catch (error) {
+    console.error("Database Error:", error);
+    throw new Error("Failed to fetch latest bookmarks.");
+  }
+};
+
+export const fetchLatestCategories = async () => {
+  try {
+    const latestCategories = await prisma.category.findMany({
+      orderBy: {
+        createdAt: "desc",
+      },
+      take: 5,
+    });
+
+    return latestCategories.map(({ id, name, createdAt }) => ({
+      id,
+      name,
+      createdAt,
+    }));
+  } catch (error) {
+    console.error("Database Error:", error);
+    throw new Error("Failed to fetch latest bookmarks.");
+  }
+};
