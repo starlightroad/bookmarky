@@ -6,7 +6,7 @@ export default async function Cards() {
 
   return (
     <>
-      <Card className="bg-slate-50">
+      <Card>
         <CardHeader className="p-5">
           <CardTitle className="text-lg">Bookmarks</CardTitle>
         </CardHeader>
@@ -14,7 +14,7 @@ export default async function Cards() {
           <p className="text-xl">{numberOfBookmarks}</p>
         </CardContent>
       </Card>
-      <Card className="bg-slate-50">
+      <Card>
         <CardHeader className="p-5">
           <CardTitle className="text-lg">Categories</CardTitle>
         </CardHeader>
