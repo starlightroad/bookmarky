@@ -39,7 +39,7 @@ export default async function BookmarksTable({
                   <span>{title}</span>
                 </TableCell>
                 <TableCell className="px-4 py-2">
-                  <span>{category?.name}</span>
+                  <span>{category?.name ?? "-"}</span>
                 </TableCell>
                 <TableCell className="px-4 py-2">
                   <span>{href}</span>
