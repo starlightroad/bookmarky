@@ -15,12 +15,12 @@ export default async function Overview() {
       <Navbar title="Overview" />
       <main className="px-5">
         <div className="pt-3">
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 gap-5">
             <Suspense fallback={<p>Loading cards...</p>}>
               <Cards />
             </Suspense>
           </div>
-          <div className="mt-4 grid gap-4 lg:grid-cols-2">
+          <div className="my-5 grid gap-5 lg:grid-cols-2">
             <Suspense fallback={<p>Loading latest bookmarks...</p>}>
               <LatestBookmarks />
             </Suspense>
