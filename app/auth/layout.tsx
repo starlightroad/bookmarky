@@ -4,7 +4,7 @@ type LayoutProps = {
 
 export default function AuthLayout({ children }: LayoutProps) {
   return (
-    <div className="mt-24">
+    <div className="pt-24">
       <div className="relative mx-auto w-full max-w-96 p-8">{children}</div>
     </div>
   );
