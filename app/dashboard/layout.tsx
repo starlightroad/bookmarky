@@ -1,7 +1,7 @@
 import Sidebar from "@/app/ui/dashboard/sidebar";
 import Container from "@/app/ui/container";
 import MobileSidebar from "../ui/dashboard/mobile-sidebar";
-import Overlay from "../ui/overlay";
+import Overlay from "@/app/ui/overlay";
 
 type DashboardLayoutProps = {
   children: React.ReactNode;
