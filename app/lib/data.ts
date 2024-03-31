@@ -205,10 +205,18 @@ export const fetchBookmarksPages = async (
   }
 };
 
-export const fetchCardData = async () => {
+export const fetchCardData = async (userId?: string) => {
   try {
-    const bookmarkCount = await prisma.bookmark.count();
-    const categoryCount = await prisma.category.count();
+    const bookmarkCount = await prisma.bookmark.count({
+      where: {
+        userId,
+      },
+    });
+    const categoryCount = await prisma.category.count({
+      where: {
+        userId,
+      },
+    });
     const data = await Promise.all([bookmarkCount, categoryCount]);
 
     return {
@@ -221,9 +229,12 @@ export const fetchCardData = async () => {
   }
 };
 
-export const fetchLatestBookmarks = async () => {
+export const fetchLatestBookmarks = async (userId?: string) => {
   try {
     const latestBookmarks = await prisma.bookmark.findMany({
+      where: {
+        userId,
+      },
       orderBy: {
         createdAt: "desc",
       },
@@ -249,9 +260,12 @@ export const fetchLatestBookmarks = async () => {
   }
 };
 
-export const fetchLatestCategories = async () => {
+export const fetchLatestCategories = async (userId?: string) => {
   try {
     const latestCategories = await prisma.category.findMany({
+      where: {
+        userId,
+      },
       orderBy: {
         createdAt: "desc",
       },

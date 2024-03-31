@@ -8,9 +8,12 @@ import {
   TableHeader,
   TableRow,
 } from "@/app/ui/table";
+import { auth } from "@/auth";
 
 export default async function LatestBookmarks() {
-  const latestBookmarks = await fetchLatestBookmarks();
+  const session = await auth();
+  const userId = session?.user?.id;
+  const latestBookmarks = await fetchLatestBookmarks(userId);
 
   return (
     <div className="overflow-hidden rounded-lg border px-5 py-5">
@@ -19,26 +22,32 @@ export default async function LatestBookmarks() {
           Latest Bookmarks
         </h3>
       </header>
-      <Table>
-        <TableHeader>
-          <TableRow>
-            <TableHead className="h-10">Name</TableHead>
-            <TableHead className="h-10">Category</TableHead>
-            <TableHead className="h-10">Created</TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {latestBookmarks.map(({ id, title, category, createdAt }) => {
-            return (
-              <TableRow key={id}>
-                <TableCell>{title}</TableCell>
-                <TableCell>{category?.name ?? "-"}</TableCell>
-                <TableCell>{formatDate(createdAt.toString())}</TableCell>
-              </TableRow>
-            );
-          })}
-        </TableBody>
-      </Table>
+      {!latestBookmarks.length ? (
+        <div className="flex h-24 items-center justify-center">
+          <p>No bookmarks to display.</p>
+        </div>
+      ) : (
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHead className="h-10">Name</TableHead>
+              <TableHead className="h-10">Category</TableHead>
+              <TableHead className="h-10">Created</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {latestBookmarks.map(({ id, title, category, createdAt }) => {
+              return (
+                <TableRow key={id}>
+                  <TableCell>{title}</TableCell>
+                  <TableCell>{category?.name ?? "-"}</TableCell>
+                  <TableCell>{formatDate(createdAt.toString())}</TableCell>
+                </TableRow>
+              );
+            })}
+          </TableBody>
+        </Table>
+      )}
     </div>
   );
 }

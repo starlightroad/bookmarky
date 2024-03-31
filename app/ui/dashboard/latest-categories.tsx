@@ -8,9 +8,12 @@ import {
   TableHeader,
   TableRow,
 } from "@/app/ui/table";
+import { auth } from "@/auth";
 
 export default async function LatestCategories() {
-  const latestCategories = await fetchLatestCategories();
+  const session = await auth();
+  const userId = session?.user?.id;
+  const latestCategories = await fetchLatestCategories(userId);
 
   return (
     <div className="overflow-hidden rounded-lg border px-5 py-5">
@@ -19,24 +22,30 @@ export default async function LatestCategories() {
           Latest Categories
         </h3>
       </header>
-      <Table>
-        <TableHeader>
-          <TableRow>
-            <TableHead className="h-10">Name</TableHead>
-            <TableHead className="h-10">Created</TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {latestCategories.map(({ id, name, createdAt }) => {
-            return (
-              <TableRow key={id}>
-                <TableCell>{name}</TableCell>
-                <TableCell>{formatDate(createdAt.toString())}</TableCell>
-              </TableRow>
-            );
-          })}
-        </TableBody>
-      </Table>
+      {!latestCategories.length ? (
+        <div className="flex h-24 items-center justify-center">
+          <p>No categories to display.</p>
+        </div>
+      ) : (
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHead className="h-10">Name</TableHead>
+              <TableHead className="h-10">Created</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {latestCategories.map(({ id, name, createdAt }) => {
+              return (
+                <TableRow key={id}>
+                  <TableCell>{name}</TableCell>
+                  <TableCell>{formatDate(createdAt.toString())}</TableCell>
+                </TableRow>
+              );
+            })}
+          </TableBody>
+        </Table>
+      )}
     </div>
   );
 }

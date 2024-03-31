@@ -1,8 +1,11 @@
 import { fetchCardData } from "@/app/lib/data";
 import { Card, CardContent, CardHeader, CardTitle } from "@/app/ui/card";
+import { auth } from "@/auth";
 
 export default async function Cards() {
-  const { numberOfBookmarks, numberOfCategories } = await fetchCardData();
+  const session = await auth();
+  const userId = session?.user?.id;
+  const { numberOfBookmarks, numberOfCategories } = await fetchCardData(userId);
 
   return (
     <>
