@@ -8,6 +8,7 @@ import Navbar from "@/app/ui/dashboard/navbar";
 import BookmarksTable from "@/app/ui/bookmarks/table";
 import Pagination from "@/app/ui/pagination";
 import { fetchBookmarksPages } from "@/app/lib/data";
+import FallbackSkeleton from "@/app/ui/dashboard/fallback-skeleton";
 
 export const metadata: Metadata = {
   title: "Bookmarks",
@@ -24,11 +25,11 @@ export default async function Bookmarks({ searchParams }: SearchParamsProp) {
       <Navbar title="Bookmarks" />
       <main className="px-5">
         <div className="pt-3">
-          <div className="mb-4 flex items-center justify-between gap-3">
-            <Search placeholder="Search" />
-            <AddBookmark />
-          </div>
-          <Suspense fallback={<p>Loading...</p>}>
+          <Suspense fallback={<FallbackSkeleton />}>
+            <div className="mb-4 flex items-center justify-between gap-3">
+              <Search placeholder="Search" />
+              <AddBookmark />
+            </div>
             <BookmarksTable query={query} currentPage={currentPage} />
             <div className="mt-3 flex justify-end">
               <Pagination totalPages={totalPages} />

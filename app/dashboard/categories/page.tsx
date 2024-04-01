@@ -8,6 +8,7 @@ import Navbar from "@/app/ui/dashboard/navbar";
 import CategoriesTable from "@/app/ui/categories/table";
 import Pagination from "@/app/ui/pagination";
 import { fetchCategoriesPages } from "@/app/lib/data";
+import FallbackSkeleton from "@/app/ui/dashboard/fallback-skeleton";
 
 export const metadata: Metadata = {
   title: "Categories",
@@ -24,11 +25,11 @@ export default async function Categories({ searchParams }: SearchParamsProp) {
       <Navbar title="Categories" />
       <main className="px-5">
         <div className="pt-3">
-          <div className="mb-4 flex items-center justify-between gap-3">
-            <Search placeholder="Search" />
-            <AddCategory />
-          </div>
-          <Suspense fallback={<p>Loading...</p>}>
+          <Suspense fallback={<FallbackSkeleton />}>
+            <div className="mb-4 flex items-center justify-between gap-3">
+              <Search placeholder="Search" />
+              <AddCategory />
+            </div>
             <CategoriesTable query={query} currentPage={currentPage} />
             <div className="mt-3 flex justify-end">
               <Pagination totalPages={totalPages} />
