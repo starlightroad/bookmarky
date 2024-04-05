@@ -38,8 +38,10 @@ export default async function LatestCategories() {
             {latestCategories.map(({ id, name, createdAt }) => {
               return (
                 <TableRow key={id}>
-                  <TableCell>{name}</TableCell>
-                  <TableCell>{formatDate(createdAt.toString())}</TableCell>
+                  <TableCell className="text-nowrap">{name}</TableCell>
+                  <TableCell className="text-nowrap">
+                    {formatDate(createdAt.toString())}
+                  </TableCell>
                 </TableRow>
               );
             })}

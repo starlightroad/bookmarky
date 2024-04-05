@@ -39,9 +39,13 @@ export default async function LatestBookmarks() {
             {latestBookmarks.map(({ id, title, category, createdAt }) => {
               return (
                 <TableRow key={id}>
-                  <TableCell>{title}</TableCell>
-                  <TableCell>{category?.name ?? "-"}</TableCell>
-                  <TableCell>{formatDate(createdAt.toString())}</TableCell>
+                  <TableCell className="text-nowrap">{title}</TableCell>
+                  <TableCell className="text-nowrap">
+                    {category?.name ?? "-"}
+                  </TableCell>
+                  <TableCell className="text-nowrap">
+                    {formatDate(createdAt.toString())}
+                  </TableCell>
                 </TableRow>
               );
             })}

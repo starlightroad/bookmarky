@@ -33,13 +33,15 @@ export default async function CategoriesTable({
           {categories.map(({ id, name, updatedAt }) => {
             return (
               <TableRow key={id}>
-                <TableCell className="px-4 py-2">
+                <TableCell className="text-nowrap px-4 py-2">
                   <span>{name}</span>
                 </TableCell>
-                <TableCell className="px-4 py-2">
+                <TableCell className="text-nowrap px-4 py-2">
                   <div className="flex items-center justify-between">
                     <span>{formatDate(updatedAt.toString())}</span>
-                    <TableMenu id={id} />
+                    <span className="ml-8">
+                      <TableMenu id={id} />
+                    </span>
                   </div>
                 </TableCell>
               </TableRow>

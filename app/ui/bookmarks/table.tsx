@@ -35,19 +35,21 @@ export default async function BookmarksTable({
           {bookmarks.map(({ id, title, href, updatedAt, category }) => {
             return (
               <TableRow key={id}>
-                <TableCell className="px-4 py-2">
+                <TableCell className="text-nowrap px-4 py-2">
                   <span>{title}</span>
                 </TableCell>
-                <TableCell className="px-4 py-2">
+                <TableCell className="text-nowrap px-4 py-2">
                   <span>{category?.name ?? "-"}</span>
                 </TableCell>
-                <TableCell className="px-4 py-2">
+                <TableCell className="text-nowrap px-4 py-2">
                   <span>{href}</span>
                 </TableCell>
-                <TableCell className="px-4 py-2">
+                <TableCell className="text-nowrap px-4 py-2">
                   <div className="flex items-center justify-between">
                     <span>{formatDate(updatedAt.toString())}</span>
-                    <TableMenu id={id} />
+                    <span className="ml-8">
+                      <TableMenu id={id} />
+                    </span>
                   </div>
                 </TableCell>
               </TableRow>
