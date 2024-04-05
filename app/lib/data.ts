@@ -137,6 +137,25 @@ export const fetchCategoriesPages = async (
   }
 };
 
+export const fetchBookmarks = async (userId?: string) => {
+  try {
+    const bookmarks = await prisma.bookmark.findMany({
+      where: {
+        userId,
+      },
+      include: {
+        category: {
+          select: { name: true },
+        },
+      },
+    });
+    return bookmarks;
+  } catch (error) {
+    console.error("Database Error:", error);
+    throw new Error("Failed to fetch all bookmarks.");
+  }
+};
+
 export const fetchFilteredBookmarks = async (
   userId: string,
   query: string,

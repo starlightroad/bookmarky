@@ -50,3 +50,9 @@ export const formatDate = (dateStr: string, locale: string = "en-US") => {
   const formatter = new Intl.DateTimeFormat(locale, options);
   return formatter.format(date);
 };
+
+export const generateCSV = (content: string) => {
+  const blob = new Blob([content], { type: "text/csv;charset=utf-8" });
+  const urlStr = URL.createObjectURL(blob);
+  return urlStr;
+};
