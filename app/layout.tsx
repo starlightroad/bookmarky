@@ -19,7 +19,7 @@ type RootLayoutProps = Readonly<{
 
 export default async function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang="en" className="h-full w-full">
+    <html lang="en" className="h-full w-full" suppressHydrationWarning>
       <body className={`${inter.className} h-full w-full antialiased`}>
         <Providers>
           {children}
