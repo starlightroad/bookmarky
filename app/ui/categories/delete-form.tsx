@@ -40,7 +40,7 @@ export function DeleteButton() {
 
   return (
     <Button
-      className="h-auto w-full justify-start gap-2 rounded-md bg-inherit py-1.5 pl-3 pr-2 text-slate-600 transition-colors hover:bg-blue-600 hover:text-secondary"
+      className="h-auto w-full justify-start gap-2 rounded-md bg-inherit py-1.5 pl-3 pr-2 text-slate-600 transition-colors hover:bg-secondary dark:text-white/85"
       type="submit"
       size="sm"
       disabled={status.pending}

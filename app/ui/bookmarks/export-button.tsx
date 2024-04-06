@@ -41,7 +41,7 @@ export default function ExportButton({ data }: ExportButtonProps) {
 
   return (
     <Button
-      className="h-8 min-w-8 rounded-full bg-slate-100 p-0 text-slate-600 hover:bg-slate-200"
+      className="h-8 min-w-8 rounded-full bg-secondary p-0 text-primary hover:bg-secondary/90"
       onClick={downloadCSV.bind(undefined, data)}
     >
       <Download size={16} />

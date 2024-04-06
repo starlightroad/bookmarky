@@ -15,7 +15,7 @@ export default async function Home() {
 
   return (
     <>
-      <header className="fixed h-14 w-full border-b bg-slate-800 px-5 py-3 sm:flex sm:items-center">
+      <header className="fixed h-14 w-full border-b bg-slate-800 px-5 py-3 dark:bg-slate-900 sm:flex sm:items-center">
         <Container>
           <nav>
             <ul className="flex items-center justify-between">

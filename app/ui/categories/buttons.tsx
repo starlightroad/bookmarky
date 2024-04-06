@@ -19,7 +19,7 @@ export function UpdateCategory({ id }: { id: string }) {
 
   return (
     <Link
-      className="flex w-full items-center gap-2 rounded-md py-1.5 pl-3 pr-2 text-slate-600 transition-colors hover:bg-blue-600 hover:text-secondary"
+      className="flex w-full items-center gap-2 rounded-md py-1.5 pl-3 pr-2 text-slate-600 transition-colors dark:text-white/85"
       href={link}
     >
       <Edit size={16} />

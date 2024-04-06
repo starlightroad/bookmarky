@@ -1,7 +1,7 @@
 "use client";
 
 import clsx from "clsx";
-import { useSidebarProvider } from "@/app/lib/providers";
+import { useSidebarProvider } from "@/app/lib/providers/sidebar";
 
 export default function Overlay() {
   const { show, setShow } = useSidebarProvider();

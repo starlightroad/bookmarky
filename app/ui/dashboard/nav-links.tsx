@@ -16,7 +16,7 @@ export default function NavLinks() {
         const LinkIcon = link.icon;
 
         const linkStyle = clsx(
-          "flex items-center gap-3 rounded-md px-4 py-2 hover:bg-secondary/10",
+          "flex items-center gap-3 rounded-md px-4 py-2 hover:bg-secondary/10 dark:hover:bg-white/10",
           {
             "bg-secondary/10": pathname === link.href,
           },
@@ -28,9 +28,12 @@ export default function NavLinks() {
               <div
                 className={`flex h-5 w-5 items-center justify-center rounded-full ${link.bgColor}`}
               >
-                <LinkIcon className="text-secondary" size={12} />
+                <LinkIcon
+                  className="text-secondary dark:text-white/85"
+                  size={12}
+                />
               </div>
-              <p className="text-sm font-medium text-secondary/80">
+              <p className="text-sm font-medium text-secondary/80 dark:text-white/85">
                 {link.name}
               </p>
             </Link>

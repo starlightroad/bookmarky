@@ -2,7 +2,7 @@
 
 import { MenuSquare } from "lucide-react";
 import { Button } from "@/app/ui/button";
-import { useSidebarProvider } from "@/app/lib/providers";
+import { useSidebarProvider } from "@/app/lib/providers/sidebar";
 
 type NavbarProps = {
   title: string;

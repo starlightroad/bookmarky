@@ -47,7 +47,7 @@ export default function CreateBookmarkForm({
             placeholder="Name"
             autoComplete="off"
           />
-          <CaseSensitive className="pointer-events-none absolute left-3 top-1/2 h-[14px] w-[14px] -translate-y-1/2 text-muted-foreground peer-focus:text-gray-900" />
+          <CaseSensitive className="pointer-events-none absolute left-3 top-1/2 h-[14px] w-[14px] -translate-y-1/2 text-muted-foreground peer-focus:text-gray-900 dark:peer-focus:text-gray-500" />
         </div>
       </div>
 
@@ -64,7 +64,7 @@ export default function CreateBookmarkForm({
             placeholder="URL"
             autoComplete="off"
           />
-          <Link2 className="pointer-events-none absolute left-3 top-1/2 h-[14px] w-[14px] -translate-y-1/2 text-muted-foreground peer-focus:text-gray-900" />
+          <Link2 className="pointer-events-none absolute left-3 top-1/2 h-[14px] w-[14px] -translate-y-1/2 text-muted-foreground peer-focus:text-gray-900 dark:peer-focus:text-gray-500" />
         </div>
       </div>
 
@@ -87,7 +87,7 @@ export default function CreateBookmarkForm({
               })}
             </SelectContent>
           </Select>
-          <Layers3 className="pointer-events-none absolute left-3 top-1/2 h-[14px] w-[14px] -translate-y-1/2 text-muted-foreground peer-focus:text-gray-900" />
+          <Layers3 className="pointer-events-none absolute left-3 top-1/2 h-[14px] w-[14px] -translate-y-1/2 text-muted-foreground peer-focus:text-gray-900 dark:peer-focus:text-gray-500" />
         </div>
       </div>
 

@@ -30,7 +30,3 @@ export const SidebarProvider = ({
 export const useSidebarProvider = () => {
   return useContext(SidebarContext);
 };
-
-export function Providers({ children }: { children: React.ReactNode }) {
-  return <SidebarProvider>{children}</SidebarProvider>;
-}

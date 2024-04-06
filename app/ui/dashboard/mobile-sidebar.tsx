@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useEffect } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import clsx from "clsx";
-import { useSidebarProvider } from "@/app/lib/providers";
+import { useSidebarProvider } from "@/app/lib/providers/sidebar";
 import BookmarkyLogo from "../bookmarky-logo";
 import { signOutUser } from "@/app/lib/actions/auth";
 import { fetchSidebarLinks } from "@/app/lib/data";
@@ -34,7 +34,7 @@ export default function MobileSidebar() {
   }, [show, setShow]);
 
   const asideStyle = clsx(
-    "fixed bottom-0 top-0 z-20 min-h-screen w-full max-w-56 -translate-x-full transform-gpu bg-slate-800 px-3 transition-transform",
+    "fixed bottom-0 top-0 z-20 min-h-screen w-full max-w-56 -translate-x-full transform-gpu bg-slate-800 px-3 transition-transform dark:bg-slate-900",
     {
       "translate-x-0": show,
     },
@@ -68,9 +68,12 @@ export default function MobileSidebar() {
                     <div
                       className={`flex h-5 w-5 items-center justify-center rounded-full ${link.bgColor}`}
                     >
-                      <LinkIcon className="text-secondary" size={12} />
+                      <LinkIcon
+                        className="text-secondary dark:text-white/85"
+                        size={12}
+                      />
                     </div>
-                    <p className="text-sm font-medium text-secondary/80">
+                    <p className="text-sm font-medium text-secondary/80 dark:text-white/85">
                       {link.name}
                     </p>
                   </button>

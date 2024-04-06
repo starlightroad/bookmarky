@@ -34,7 +34,7 @@ export default function EditCategoryForm({ category }: EditCategoryFormProps) {
             autoComplete="off"
             defaultValue={category?.name}
           />
-          <CaseSensitive className="pointer-events-none absolute left-3 top-1/2 h-[14px] w-[14px] -translate-y-1/2 text-muted-foreground peer-focus:text-gray-900" />
+          <CaseSensitive className="pointer-events-none absolute left-3 top-1/2 h-[14px] w-[14px] -translate-y-1/2 text-muted-foreground peer-focus:text-gray-900 dark:peer-focus:text-gray-500" />
         </div>
       </div>
 

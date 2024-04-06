@@ -14,7 +14,7 @@ export default function TableMenu({ id }: { id: string }) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
-        <div className="rounded-sm p-1.5 hover:cursor-pointer hover:bg-slate-100">
+        <div className="rounded-sm p-1.5 hover:cursor-pointer hover:bg-slate-100 dark:hover:bg-secondary">
           <MoreHorizontal size={16} />
         </div>
       </DropdownMenuTrigger>
