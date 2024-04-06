@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useFormState, useFormStatus } from "react-dom";
 import { AtSign } from "lucide-react";
 import { Button } from "@/app/ui/button";
@@ -14,17 +13,14 @@ export default function LoginForm() {
   if (form?.email) {
     return (
       <div className="flex flex-col">
-        <header className="mb-6 flex flex-col gap-2 text-center">
+        <header className="flex flex-col gap-2 text-center">
           <h1 className="text-2xl font-semibold tracking-tight">
-            Check your email
+            Check Your Email
           </h1>
           <TypographyMuted>
-            A verification link was sent to <strong>{form?.email}</strong>
+            A verification link was sent to <strong>{form?.email}</strong>.
           </TypographyMuted>
         </header>
-        <Button asChild>
-          <Link href="/">Go to home</Link>
-        </Button>
       </div>
     );
   }
@@ -51,7 +47,7 @@ export default function LoginForm() {
               placeholder="name@domain.com"
               autoComplete="off"
             />
-            <AtSign className="pointer-events-none absolute left-3 top-1/2 h-[14px] w-[14px] -translate-y-1/2 text-muted-foreground peer-focus:text-gray-900" />
+            <AtSign className="pointer-events-none absolute left-3 top-1/2 h-[14px] w-[14px] -translate-y-1/2 text-muted-foreground peer-focus:text-gray-900 dark:peer-focus:text-gray-500" />
           </div>
         </div>
 
