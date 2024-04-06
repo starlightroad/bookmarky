@@ -23,8 +23,8 @@ export default async function LatestBookmarks() {
         </h3>
       </header>
       {!latestBookmarks.length ? (
-        <div className="flex h-24 items-center justify-center">
-          <p>No bookmarks to display.</p>
+        <div className="flex h-24 items-center justify-center text-slate-600 dark:text-slate-400">
+          <p className="text-sm">No bookmarks to display.</p>
         </div>
       ) : (
         <Table>

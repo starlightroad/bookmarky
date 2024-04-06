@@ -52,7 +52,7 @@ export default async function CategoriesTable({
 
       {!categories.length && (
         <div className="flex h-20 items-center justify-center px-4">
-          <p className="text-center text-sm text-slate-600">
+          <p className="text-center text-sm text-slate-600 dark:text-slate-400">
             {!query ? (
               "No categories found."
             ) : (

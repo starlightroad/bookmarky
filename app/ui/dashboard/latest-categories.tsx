@@ -23,8 +23,8 @@ export default async function LatestCategories() {
         </h3>
       </header>
       {!latestCategories.length ? (
-        <div className="flex h-24 items-center justify-center">
-          <p>No categories to display.</p>
+        <div className="flex h-24 items-center justify-center text-slate-600 dark:text-slate-400">
+          <p className="text-sm">No categories to display.</p>
         </div>
       ) : (
         <Table>
